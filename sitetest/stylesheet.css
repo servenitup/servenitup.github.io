@@ -1,0 +1,217 @@
+#wrapper{
+    max-width: 850px; 
+    margin: 0 auto; 
+}
+
+h1 {
+    color: #264d73;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 2em;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+#fixedheader {
+    background-color: #003366;
+
+}
+
+#fixedheader ul{
+    font-family: Helvetica, Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    background-color: #003366;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#fixedheader a:link {
+    text-decoration: none;
+    background-color: #003366;
+    color: #F3F3F3;
+}
+
+#fixedheader a:visited {
+    text-decoration: none;
+    background-color: #003366;
+    color: #F3F3F3;
+}
+
+#fixedheader a:hover {
+    text-decoration: none;
+    background-color: #003366;
+    color: white;
+}
+
+#fixedheader a:active {
+    text-decoration: none;
+    background-color: #003366;
+    color: #F3F3F3;
+}
+
+#fixedheader li {
+    background-color: #003366;
+    color: white;
+}
+
+li {
+    float: left;
+    display: block;
+    padding: 8px 14px;
+    color: #434b4d;
+}
+
+#intro {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.3em;
+}
+
+body {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+h2 {
+    color: #264d73;
+    font-family: Helvetica, Arial, Helvetica, sans-serif;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+h3 {
+    font-family: Helvetica, Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    text-align: left;
+}
+
+h4 {
+    font-family: Helvetica, Arial, Helvetica, sans-serif;
+    font-size: 1.25em;
+    font-style: italic;
+    font-weight: bold;
+    text-align: left;
+    text-decoration: italic;
+}
+
+p {
+    font-family: Helvetica, Arial, Helvetica, sans-serif;
+    font-size: 1.25em;
+}
+
+.description {
+    font-size: 1em;
+}
+
+* {
+    background-color: #F3F3F3;
+}
+
+#map {
+    text-align: center;
+}
+
+#contact {
+    float: right;
+    margin-right: 10%;
+    margin-top: 77px;
+    font-size: 1.1em;
+}
+
+#fixedfooter ul{
+    color: #264d73;
+    font-family: Avenir, Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    border-top: 1px solid #264d73;
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+#fixedfooter a:link {
+    color: #264d73;
+}
+
+#fixedfooter a:visited {
+    color: #264d73;
+}
+
+#fixedfooter a:hover {
+    color: #264d73;
+
+}
+
+#fixedfooter a:active {
+    color: #264d73;
+}
+
+a:link {
+    text-decoration: none;
+    color: #264d73;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #264d73;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #264d73;
+}
+
+a:active {
+    text-decoration: none;
+    color: #264d73;
+}
+
+.subhead {
+    padding-top: 65px;
+}
+
+@media screen and (max-width:599px) {
+ #fixedheader ul {
+    text-align: center;
+    display: inline;
+  }
+}
+/* 
+* Function to animate leaving a page
+*/
+$.fn.leavePage = function() {   
+    
+  this.click(function(event){
+
+    // Don't go to the next page yet.
+    event.preventDefault();
+    linkLocation = this.href;
+    
+    // Fade out this page first.
+    $('body').fadeOut(500, function(){
+      
+      // Then go to the next page.
+      window.location = linkLocation;
+    });      
+  }); 
+};
+
+
+/* 
+* Call the leavePage function upon link clicks with the "transition" class
+*/
+$('.transition').leavePage();

@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+        
+<head>
+        <title>Missourian Infographics</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" / >
+            
+        <!-- THESE ARE THE CSS FILES I ADDED -->
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Domine:400,700">
+            
+
+                <!-- THESE ARE THE JAVASCRIPT FILES I ADDED -->
+                <script src="http://bloximages.newyork1.vip.townnews.com/columbiamissourian.com/content/tncms/live/components/jquery/resources/scripts/jquery.min.js?_dc=1423174924"></script>
+                <script type="text/javascript" src="http://www.columbiamissourian.com/app/projects/Project_files/js/jquery-1.9.1.js"></script>
+                <script type="text/javascript" src="http://www.columbiamissourian.com/app/projects/Project_files/js/jquery-ui-1.10.2.custom.js"></script>
+                <script type="text/javascript" src="http://www.columbiamissourian.com/app/projects/Project_files/js/jquery.ui.tooltip.js"></script>
+                <script type="text/javascript" src="http://www.columbiamissourian.com/app/projects/Project_files/js/jquery.cycle.all.js"></script>
+
+                <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+                <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+                <!-- TAKE THESE OUT TO PUBLISH ON COLUMBIAMISSOURIAN.COM -->
+                <script src="http://code.highcharts.com/highcharts.js"></script>
+                <script src="http://code.highcharts.com/modules/exporting.js"></script>
+                <script type="text/javascript" src="http://media.columbiamissourian.com/highcharts_restyle/missourian.js"></script>
+                <!-- add my own java file -->
+                <script type="text/javascript" src="muenrollment.js"></script>
+                <script type="text/javascript" src="mo_topo_county.json"></script>
+        <!-- END -->
+
+        <style>
+        /*! jQuery UI - v1.10.2 - 2013-03-17
+        * http://jqueryui.com
+        * Includes: jquery.ui.core.css, jquery.ui.resizable.css, jquery.ui.selectable.css, jquery.ui.accordion.css, jquery.ui.autocomplete.css, jquery.ui.button.css, jquery.ui.datepicker.css, jquery.ui.dialog.css, jquery.ui.menu.css, jquery.ui.progressbar.css, jquery.ui.slider.css, jquery.ui.spinner.css, jquery.ui.tabs.css, jquery.ui.tooltip.css
+        * Copyright 2013 jQuery Foundation and other contributors Licensed MIT */
+
+
+
+        h1 {
+            line-height: 1.2em;
+        }
+
+        p.body {
+            color: #444;
+            font-size: 16px;
+            line-height: 27px;
+            margin-bottom: 24px;
+        }
+
+        .domine {
+            font-family:Domine;
+        }
+
+
+        .clear {clear: both;}
+
+        .centered {
+            text-align: center;
+            margin: 0 0 25px 0;
+            font-family: inerit;
+            font-size: 18px;
+            line-height: 1.5em;
+        }
+
+        /* ABOUT THE SINGLE-DOUBLE-TRIPLE CLASSES */
+
+        .single {
+            width: 100%;
+            height: auto;
+            margin: auto; 
+        }
+
+        .double {
+            width: 47%;
+             min-width: 270px;
+            height: auto;
+            margin: auto;
+            padding: 0 3% 0 0;
+            float: left; 
+        }
+
+        .triple {
+            width: 30%;
+            min-width: 270px;
+            height: auto;
+            margin: auto;
+            padding: 0 3% 0 0;
+            float: left; 
+        }
+
+        /* ALL ABOUT THE GRAPHIC DIV */
+
+        .graphic{
+            width: 100%;
+            height: auto;
+            margin: 30px auto 0 auto ;
+        }
+
+        .graphic h4 {
+            padding: 0;
+            margin: 0 0 4px 0;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: bold;
+            font-size: 1.3em;
+            line-height: 1.3em;
+            }
+            
+        .graphic p, .graphic2 p {
+            width: 100%;
+            padding: 0;
+            margin: 0 0 8px 0;
+            font-family:  'Open Sans', sans-serif;
+            font-size: 1em;
+            line-height: 1.3em;
+            color: #666;
+            }
+            
+        .graphic img{
+            width: 100%;
+            height: auto;
+            }
+                
+        .graphic div{
+            /*width: 100%;*/
+            height: auto;
+        }
+
+        /* NUMBERED DOTS */
+
+        .dots{
+            position: relative;
+        }
+
+        .dot {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            padding: 0;
+            line-height: 20px;
+            font-family: sans-serif;
+            font-size: 14px;
+            width: 20px !important;
+            height: 20px !important;
+            border-radius: 20px;
+            border: 1px solid #ffffff;
+            box-shadow: 1px 1px 1px #000000;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+
+
+        
+
+        /* ROLLOVER BOX */
+
+        .ui-tooltip {
+            padding: 10px 20px;
+            color: black;
+            background-color: white;
+            font: 14px  'Open Sans', sans-serif;
+            box-shadow: 0 0 7px black;
+        }
+
+
+
+        /* 1-2-3 PANEL STYLES */
+
+        .tab-nav a {
+            background: none repeat scroll 0 0 white;
+            border: 1px solid #CCCCCC;
+            color: #444444;
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 0 -1px 0 0;
+            padding: 2px 10px 2px;
+            text-decoration: none;
+            font-family: sans-serif;
+        }
+
+        .tab-nav a.activeSlide {
+            background: none repeat scroll 0 0 #E8E8E8;
+            color: #000000;
+        }
+
+        .tab-nav {
+            width: auto !important;
+            float: left;
+            margin: 10px 10px 0 0;
+            height: 44px;
+        }
+
+        .tab-wrapper {
+            margin: 0 auto -1px auto;
+            height: 20px;
+        }
+
+        #panel_graphic {
+            margin: 10px 0 0 0;
+            position: relative;
+            width: 100% !important;
+        }
+
+        .panel-line {
+            border-top: 1px solid #FFFFFF;
+            line-height: 0;
+        }
+
+        .panel {
+            position: relative;
+            display: block;
+            left: 0;
+            opacity: 1;
+            padding: 5px 0 0 0;
+            z-index: 4;
+            background-color: white;
+        }
+
+        .title{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1em; 
+            width: 450px;
+            margin-left: 40px;
+        }
+
+
+
+        #parent {
+          position: absolute;
+          width: 30%;
+        }
+
+        .dots #parent {
+          position: absolute;
+          width: auto;
+        }
+
+        #popup {
+          margin: 5% 0;
+          border: solid 1px #666666;
+          background-color: white;
+          padding: 5%;
+          font-family: 'Open Sans', sans-serif;
+          font-size: 0.9em;
+          line-height: 1.2em;
+          max-width: 250px;
+        }
+
+
+        #parent #popup {
+          display: none;
+        }
+
+        #parent:hover #popup {
+          display: block;
+          z-index: 5000;
+        }
+
+        #parent:hover {
+          z-index: 5000;
+        }
+
+        
+        /*CARTO DB MAP*/
+        #cartodb-map {
+            width:100%; 
+            height:400px;
+        }
+
+        /* RESPONSIVE STYLE BREAKPOINT REFERENCE
+            big desktops: 1400px;
+            most laptops: 1100px;
+            iPad portrait: 768px;
+            phones: 480px; 
+            smaller phones: 300px;*/
+            
+        @media (max-width: 1400px){
+            /*use these classes to switch out three levels of images with hard-to-read text*/
+            .hide-desktop {display:block;}
+            .hide-desktop {display:none;}
+            .hide-tablet {display:none;}
+        }
+
+        @media (max-width: 1100px){
+
+        }
+
+        @media (max-width: 768px){
+            .hide-desktop {display:none;}
+            .hide-tablet {display:block;}
+            .double {
+                width:100%;
+            }
+            .triple { 
+                width:100%;
+            }
+        }
+
+        @media (max-width: 480px){
+            .hide-desktop {display:none;}
+            .hide-tablet {display:none;}
+            .hide-mobile {display:block;}
+
+            /*making fonts a bit smaller*/
+            .graphic h4 {font-size:1.1em;}
+            .graphic p {font-size:.9em;}
+        }
+
+        @media (max-width: 300px){
+
+        }
+
+        </style>
+
+</head>
+
+
+
+<body id="site" class="base">
+
+    <div id="main" style="max-width: 930px; margin: auto;">
+    
+<!-- ////////////////////FILL OUT BELOW FOR HEADLINE AND YOUR INFO ////////////////////// -->
+        <div class="centered">  
+                <h1 class='domine'>Mapping MU's Enrollment</h1>
+                <p class="body domine">The state's flagship university experienced at 20 percent enrollment decline between fall 2015 and fall 2016. According to MU, reasons for the decline include the fall 2015 protests, fewer high school graduates in Missouri, and greater competition from other universities. But the decline has shown a spotlight on demographic divides on campus. While taxpayers across the state help fund MU, most of the Missouri residents who attend the university are white and from urban areas.</p>
+                <div class="byline">By <a href="https://www.columbiamissourian.com/users/profile/rserven/">Ruth Serven</a>, <a href="http://www.columbiamissourian.com/">The Missourian</a> | May 8, 2017</div>
+                <hr />
+        </div>
+        
+    
+<!-- //////////////////BEGINNING OF GRAPHIC TEMPLATE ELEMENTS /////////////////////// -->
+
+
+        <!-- /////////////////////// BEGIN SINGLE LAYER///////////////////////////-->   
+
+        <!-- /////////////////////// BEGIN SINGLE LAYER///////////////////////////-->   
+
+       
+<!-- /////////////////////// BEGIN SINGLE LAYER///////////////////////////-->   
+
+        <!-- CHART EXAMPLE-->
+        <div class="single">
+            <div class="graphic">
+                <h4>Diversity across the state</h4>
+                <p class="body">On average, black residents make up about 12 percent of Missouri's population and 13 percent of its high school graduates (Missouri's non-white graduates make up a smaller percentage than in other states in the region, however). But in most of the state, black residents make up much less of individual counties' population.  <em> Numbers do not include St. Louis City residents, which are 48 percent black. </em></p>
+                <!-- NOTE: YOU NEED TO ADD HTTP: TO THE FRONT OF THE // IN THE URL OF THE IFRAME -->
+                <div>
+                    <iframe class='highcharts-iframe' src='http://cloud.highcharts.com/embed/oragodo' style='border: 0; width: 100%; height: 500px'></iframe>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <!-- END SIMPLE IMAGE -->
+
+        <!-- /////////////////////// END SINGLE LAYER///////////////////////////--> 
+        <!-- CARTODB MAP EXAMPLE -->
+        <div class="double">
+            <div class="graphic">
+                <div class='text'>
+                    <h4>Decline in total undergraduates, by county</h4>
+                    <p class="body">In the fall of 2015, MU had about 17,000 in-state undergraduates. A lot of the declines were in rural counties, but counties surrounding urban areas like St. Louis and Kansas City also sent fewer students to the university.</p>
+                </div>
+                <div>
+                <iframe width="100%" height="520" frameborder="0" src="https://ruthserven.carto.com/builder/dda2f02c-25db-11e7-b499-0e05a8b3e3d7/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="double">
+            <div class="graphic">
+                <h4>Decline in first-time students, by county</h4>
+                <p class="body"> First-time enrollment from rural counties declined sharply across the state, by as much as 100 percent in some counties. Overall, the fall of 2016 saw about 20 percent fewer freshmen than previous years. On Friday, <a href = "http://www.columbiamissourian.com/news/higher_education/mu-expects-smaller-freshman-class-for-second-consecutive-year/article_de3af8fc-2e93-11e7-862b-b30867b94216.html"> MU announced that it expected its 2017 freshman class to shrink even further, </a> by about 15 percent. </p>
+            </div>
+            <div>
+            <iframe width="100%" height="520" frameborder="0" src="https://ruthserven.carto.com/builder/e6ba0caf-c339-4977-b721-0ce986f19b8f/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <hr />
+        <!-- END CARTODB MAP -->
+        <div class="single">  
+            <div class="graphic">
+                <h4>Demographic changes</h4>
+                <p class="body">As millennials graduate college, the class of high school graduates will get smaller and smaller. Across Missouri, the age cohorts of people 0-17 and 18-24 have shrunk over the past few years. The Western Interstate Commission for Higher Education predicts that this lull in Missouri's high school graduates, down from a high of 71,000 in 2010, <a href="http://knocking.wiche.edu/state-profiles/">will continue until 2021.</a> This decline is not just a problem in Missouri. According to <a href ="https://nscresearchcenter.org/wp-content/uploads/CurrentTermEnrollment-Fall2015.pdf">a 2015 report,</a> the number of new college students was 1.7 percent lower than in the previous year. </p>
+            </div>
+        </div>
+             <hr />
+
+        <!-- /////////////////////// BEGIN SINGLE-GRAPHIC LAYER ///////////////////////////-->
+            
+        <div class="single">
+            <div class="graphic">
+                <h4>An urban-rural divide</h4>
+                <p class="body">Nearly half of undergraduate students come from urban counties. Roughly one-fifth of MU’s student body comes from the St. Louis area.</p>
+                <div><img src="countytable.jpg" style="border: 0; width: 95%; height: 85px;"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <!-- ///////////////////////END single-GRAPHIC LAYER///////////////////////////-->
+        <!-- ///////////////////////begin double-GRAPHIC LAYER///////////////////////////-->
+        
+        <hr />
+        <div class="single">  
+            <div class="graphic">
+                <p class="body"> <strong>SOURCES: </strong> Western Interstate Commission for Higher Education, MU Student Information Services, MU Office of Enrollment Management, US Census Bureau, Missouri Census Data Center</p>
+            </div>
+        </div>
+        
+        
+        
+        
+
+
+
+<!-- //////////////////////END OF GRAPHIC TEMPLATE ELEMENTS: DO NOT DELETE ANYTHING BELOW HERE ///////////////////////// -->
+    
+
+    </div>
+</body>
+</html>
