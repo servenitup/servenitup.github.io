@@ -1,3 +1,4 @@
+/* added margin bottom to body text, changed fixed position of the sticky footer */
 #wrapper{
     max-width: 850px; 
     margin: 0 auto; 
@@ -28,7 +29,7 @@ h1 {
     left: 0;
     position: fixed;
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
     z-index: 1;
 }
 
@@ -77,6 +78,8 @@ li {
 body {
     margin-left: 30px;
     margin-right: 30px;
+    margin-bottom: 100px;
+    clear: both;
 }
 
 h2 {
@@ -104,7 +107,8 @@ h4 {
 }
 
 p {
-    font-family: Helvetica, Arial, Helvetica, sans-serif;
+    font-family: 'Libre Franklin', sans-serif;
+    /*font-family: Helvetica, Arial, Helvetica, sans-serif; */
     font-size: 1.25em;
 }
 
@@ -129,7 +133,7 @@ p {
 
 #fixedfooter ul{
     color: #264d73;
-    font-family: Avenir, Arial, Helvetica, sans-serif;
+    font-family: Arial, Arial, Helvetica, sans-serif;
     font-size: 0.9em;
     list-style-type: none;
     margin: 0;
@@ -190,28 +194,3 @@ a:active {
     display: inline;
   }
 }
-/* 
-* Function to animate leaving a page
-*/
-$.fn.leavePage = function() {   
-    
-  this.click(function(event){
-
-    // Don't go to the next page yet.
-    event.preventDefault();
-    linkLocation = this.href;
-    
-    // Fade out this page first.
-    $('body').fadeOut(500, function(){
-      
-      // Then go to the next page.
-      window.location = linkLocation;
-    });      
-  }); 
-};
-
-
-/* 
-* Call the leavePage function upon link clicks with the "transition" class
-*/
-$('.transition').leavePage();
