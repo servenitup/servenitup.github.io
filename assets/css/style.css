@@ -13,7 +13,7 @@
    Base Styles, Bootstrap Modifications & Fonts Import
    ========================================================================== */
 
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(http://fonts.googleapis.com/css?family=Spartan:400,700);
 
 
 ::-moz-selection {
@@ -56,6 +56,22 @@
 /* ==========================================================================
    General styles
    ========================================================================== */
+
+/*adding fontface and Leauge of Spartan fonts*/
+
+@font-face {
+    font-family: 'Spartan';
+    src: url('spartan-bold.eot');
+    src: url('spartanspartan-bold.eot?#iefix') format('embedded-opentype'),
+         url('leaguespartan-bold.woff2') format('woff2'),
+         url('leaguespartan-bold.woff') format('woff'),
+         url('leaguespartan-bold.ttf') format('truetype'),
+         url('leaguespartan-bold.svg#league_spartanbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+h1 { font-family:"League Spartan"; }
 
 
 body {
