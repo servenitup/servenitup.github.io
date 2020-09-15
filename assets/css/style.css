@@ -13,8 +13,11 @@
    Base Styles, Bootstrap Modifications & Fonts Import
    ========================================================================== */
 
-@import url(http://fonts.googleapis.com/css?family=Spartan:400,700);
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+@import url(fonts.googleapis.com/css2) 
+	
+	<link href="https://fonts.googleapis.com/css2?family=Spartan:wght@800&display=swap" rel="stylesheet">
 
 ::-moz-selection {
     background: #f2c2c9;
@@ -59,23 +62,24 @@
 
 /*adding fontface and Leauge of Spartan fonts*/
 
+
 @font-face {
-    font-family: 'Spartan';
+    font-family: 'Spartan', sans-serif;
     src: url('spartan-bold.eot');
-    src: url('spartanspartan-bold.eot?#iefix') format('embedded-opentype'),
-         url('leaguespartan-bold.woff2') format('woff2'),
-         url('leaguespartan-bold.woff') format('woff'),
-         url('leaguespartan-bold.ttf') format('truetype'),
-         url('leaguespartan-bold.svg#league_spartanbold') format('svg');
+    src: url('spartan-bold.eot?#iefix') format('embedded-opentype'),
+         url('spartan-bold.woff2') format('woff2'),
+         url('spartan-bold.woff') format('woff'),
+         url('spartan-bold.ttf') format('truetype'),
+         url('spartan-bold.svg#league_spartanbold') format('svg');
     font-weight: bold;
     font-style: normal;
 }
 
-h1 { font-family:"League Spartan"; }
+h1 { font-family:"Spartan"; }
 
 
 body {
-    font-family: 'League Spartan', sans-serif;
+    font-family: 'Spartan', sans-serif;
     font-weight: 400;
     font-size: 16px;
 
