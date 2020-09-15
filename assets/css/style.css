@@ -13,11 +13,7 @@
    Base Styles, Bootstrap Modifications & Fonts Import
    ========================================================================== */
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@800&display=swap');
-</style>
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@800&display=swap')
 
 ::-moz-selection {
     background: #f2c2c9;
