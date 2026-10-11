@@ -263,3 +263,8 @@ h2 {
 	opacity: 0.4;
     background-color: blue;
 }
+
+/* TikTok icon (not in Font Awesome 4), sized and colored to match the other social icons */
+#social .tiktok-link { color: #4a4a4a; display: inline-block; }
+#social .tiktok-link:hover { color: #003366; }
+#social .tiktok-icon { width: 36px; height: 40px; vertical-align: middle; }
